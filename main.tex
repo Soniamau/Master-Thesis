@@ -1,0 +1,563 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+english, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+%parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{MastersDoctoralThesis} % The class file specifying the document structure
+\usepackage[latin1]{inputenc}
+
+\usepackage{layouts}
+\usepackage{amsmath,amssymb,bm,dsfont,amsthm}
+%\usepackage[utf8]{inputenc} % Required for inputting international characters
+%\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{subfig}
+\usepackage{siunitx}
+\usepackage{subfiles} %Chapter Compiling
+%\usepackage{palatino} % Use the Palatino font by default
+\usepackage{mathtools} %double subscript
+
+\usepackage{graphicx}				% Use pdf, png, jpg, or epsÂ§ with pdflatex; use eps in DVI mode
+\usepackage{enumitem}
+\usepackage[square,numbers]{natbib}
+
+%\usepackage[backend=bibtex,natbib=true,sorting=none]{biblatex}
+%\addbibresource{/Users/Miqueleta/Desktop/Thesis Master/biblio.bib}
+
+%brakets
+\newcommand{\braket}[2]{\langle {#1} | {#2} \rangle }
+\newcommand{\sandwich}[3]{\langle {#1} | {#2} | {#3} \rangle}
+\newcommand{\ket}[1]{| {#1} \rangle }
+\newcommand{\bra}[1]{\langle {#1} | }
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+%italics
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\ie}{\textit{i.e.} }
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\via}{{\it via}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\aleqn}[1]{\begin{align}\ensuremath{#1}\end{align}}
+
+%referencing
+\newcommand{\eqnref}[1]{Eq.~\eqref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\secref}[1]{Sec.~\ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+\newcommand{\eqcite}[1]{Eq.~\eqref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\chref}[1]{Ch.~\ref{#1}}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{example}[thm]{Example}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{ansatz}[thm]{Ansatz}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture}
+
+\newcommand{\pr}{\ensuremath{^{\prime}}}
+\newcommand{\id}{\mathbb{I}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\V}{\mathcal{V}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\ml}{\ell}
+\newcommand{\pp}{\mathcal{P}}
+
+
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\im}{\item}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\ra}{\rangle}
+\newcommand{\la}{\langle}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mi}{\mathrm{i}}
+
+
+% Abbreviations Journals
+
+\newcommand{\PRL}[3]{Phys.~Rev. Lett.~\textbf{#1}, #2~(#3)}
+\newcommand{\APL}[3]{Appl.~Phys. Lett.~\textbf{#1}, #2~(#3)}
+\newcommand{\EPL}[3]{Europhys.~Lett.~\textbf{#1}, #2~(#3)}
+\newcommand{\PRA}[3]{Phys.~Rev. A~\textbf{#1}, #2~(#3)}
+\newcommand{\PRB}[3]{Phys.~Rev. B~\textbf{#1}, #2~(#3)}
+\newcommand{\RMP}[3]{Rev.~Mod.~Phys.~\textbf{#1}, #2~(#3)}
+\newcommand{\PRD}[3]{Phys.~Rev. D~\textbf{#1}, #2~(#3)}
+\newcommand{\JPA}[3]{J.~Phys. A~\textbf{#1}, #2~(#3)}
+\newcommand{\JPB}[3]{J.~Phys. B: At.~Mol.~Opt.~Phys.~\textbf{#1}, #2~(#3)}
+\newcommand{\PLA}[3]{Phys.~Lett. A~\textbf{#1}, #2~(#3)}
+\newcommand{\JOB}[3]{J.~Opt. B~\textbf{#1}, #2~(#3)}
+\newcommand{\JMP}[3]{J.~Math.~Phys.~\textbf{#1}, #2~(#3)}
+\newcommand{\JMO}[3]{J.~Mod.~Opt.~\textbf{#1}, #2~(#3)}
+\newcommand{\NAT}[3]{Nature~\textbf{#1}, #2~(#3)}
+\newcommand{\NATP}[3]{Nature Phys.~\textbf{#1}, #2~(#3)}
+\newcommand{\NATO}[3]{Nature Photon.~\textbf{#1}, #2~(#3)}
+\newcommand{\NATC}[3]{Nature Commun.~\textbf{#1}, #2~(#3)}
+\newcommand{\SCI}[3]{Science~\textbf{#1}, #2~(#3)}
+\newcommand{\IBID}[3]{{\em ibid}.~\textbf{#1}, #2~(#3)}
+\newcommand{\NJP}[3]{New~J.~Phys.~\textbf{#1}, #2~(#3)}
+\newcommand{\PNAS}[3]{Proc.~Natl.~Acad.~Sci.~U.S.A.~\textbf{#1}, #2~(#3)}
+\newcommand{\JAP}[3]{J.~Appl.~Phys.~\textbf{#1}, #2~(#3)}
+
+%\addbibresource{example.bib} % The filename of the bibliography
+
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
+%----------------------------------------------------------------------------------------
+%	MARGIN SETTINGS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	paper=a4paper, % Change to letterpaper for US letter
+	inner=2.5cm, % Inner margin
+	outer=3.8cm, % Outer margin
+	bindingoffset=.5cm, % Binding offset
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	%showframe, % Uncomment to show how the type block is set on the page
+}
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thesistitle{On Continuum Limits of Matrix Product States} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\supervisor{Dr.\ Gemma \textsc{De las Cuevas}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
+\examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
+\degree{Master of Science} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\author{Maria \textsc{Balanzó-Juandó}} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
+\addresses{} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
+
+\subject{Theoretical Physics} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
+\keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+\university{\href{https://www.uibk.ac.at/}{Leopold-Franzens-Universit{\"a}t Innsbruck}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\department{\href{https://www.uibk.ac.at/th-physik/}{Institut f{\"u}r Theoretische Physik}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+\group{\href{https://www.uibk.ac.at/}{Leopold-Franzens-Universit{\"a}t Innsbruck}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+\faculty{\href{}{}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+}
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{.02\textheight}
+{\scshape\LARGE \univname\par}\vspace{1.0cm} % University name
+\textsc{\Large Master Thesis}\\[0.5cm] % Thesis type
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+\HRule \\[1.5cm] % Horizontal line
+ 
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+\href{https://www.uibk.ac.at/th-physik/staff/balanzo/}{\authorname} % Author name - remove the \href bracket to remove the link
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+\href{https://www.gemmadelascuevas.com}{\supname} % Supervisor name - remove the \href bracket to remove the link  
+\end{flushright}
+\end{minipage}\\[2cm]
+ \large \textit{A thesis submitted in partial fulfillment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
+\textit{in the}\\[0.4cm]
+\groupname\\ at \deptname\\[1cm] % Research group name and department name
+
+\includegraphics[scale=0.12]{UIBK.jpg}\\[1cm] % University/department logo - uncomment to place it
+{\large \today}\\[4cm] % Date
+
+\end{center}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{declaration}
+\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
+
+\noindent\textbf{Leopold-Franzens-Universit{\"a}t Innsbruck}\\
+
+\noindent Ich erkl{\"a}re hiermit an Eides statt durch meine eigenh{\"a}ndige Unterschrift, dass ich die vorliegende Arbeit selbst{\"a}ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe. Alle Stellen, die w{\"o}rtlich oder inhaltlich den angegebenen Quellen entnommen wurden, sind als solche kenntlich gemacht.\\
+Die vorliegende Arbeit wurde bisher in gleicher oder {\"a}hnlicher Form noch nicht als Magister-/Master-/Diplomarbeit/Dissertation eingereicht. \\
+ 
+\noindent Unterschrift:\\
+\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
+ 
+\noindent Datum:\\
+\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
+\end{declaration}
+
+\cleardoublepage
+
+%----------------------------------------------------------------------------------------
+%	QUOTATION PAGE
+%----------------------------------------------------------------------------------------
+
+\vspace*{0.2\textheight}
+\begin{flushright}
+\noindent\enquote{\itshape Two roads diverged in a wood and I---
+
+I took the one less travelled by,
+
+And that has made all the difference.}\bigbreak
+\end{flushright}
+\hfill Robert Frost
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+Quantum many-body systems are very hard to describe as the number of parameters grows exponentially with the system size. Fortunately, quantum many-body states that appear in nature are very special, and do admit an efficient description. The goal of tensor network states is to provide these descriptions. A particular family of tensor networks, Matrix Product States (MPS), provides a good ansatz to describe one-dimensional pure states that are ground states of gapped Hamiltonians. Recently, continuum limits of matrix product states were studied in \cite{De17a}. It was found that the continuum limit can generally not be described by a so-called continuous Matrix Product State (cMPS), defined in \cite{Ve10}. In this thesis we find a general way of writing the continuum limit of a Matrix Product State. We show that this limit can be written as a concatenation of two cMPS, where one is in the thermodynamic limit. We also show that, in some cases, this can be written as a sum of cMPS.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+
+My first words of gratefulness should go to Dr.\ Gemma de las Cuevas for giving me the opportunity to work on this fascinating and challenging project as well as for her excellent supervision. She has helped me, providing me all the tools needed for this work, spending lots of hours in this project and guiding me. She has always had an encouraging word to keep me in high spirits and, at the same time, steer me in the right direction. Gràcies.\\
+
+I would also like to thank Univ.-Prof.\ Dr.\ Andreas Läuchli for the physical discussions and his help from a different point of view.\\
+
+I also gratefully acknowledge my friends and those who have made my stay in Innsbruck as warm as the weather permits. Thanks for the excellent atmosphere, your kindness, your invaluable advice and all the good moments we have spent together. \\
+
+Of course, I have to thank my family for giving me the opportunity to study abroad and their support since the beginning. Finally, I would like to thank those who are always beside me, no matter how far they are. To them, thanks, always.\\
+\end{acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Prints the main table of contents
+
+%\listoffigures % Prints the list of figures
+
+%\listoftables % Prints the list of tables
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%
+%\textbf{PSF} & \textbf{P}oint \textbf{S}pread \textbf{F}unction\\
+%\textbf{2LS} & \textbf{2} \textbf{L}evel \textbf{S}ystem\\
+%\textbf{3LS} & \textbf{3} \textbf{L}evel \textbf{S}ystem\\
+%\textbf{QHO} & \textbf{Q}uantum \textbf{H}armonic \textbf{O}scillator\\
+%\textbf{QM}  & \textbf{Q}uantum \textbf{M}echanics\\
+%\textbf{LHS} & \textbf{L}eft \textbf{H}hand \textbf{S}ide\\
+%\textbf{RHS} & \textbf{R}ight \textbf{H}hand \textbf{S}ide\\
+%\textbf{EM}  & \textbf{E}lectro \textbf{M}agnetic\\
+%\textbf{FT}  & \textbf{F}ourier \textbf{T}ransform\\
+%\textbf{CM} & \textbf{C}lassical \textbf{M}echanics\\
+%\textbf{PSD} & \textbf{P}hase \textbf{S}pace \textbf{D}istribution\\
+%\end{abbreviations}
+
+%----------------------------------------------------------------------------------------
+%	PHYSICAL CONSTANTS/OTHER DEFINITIONS
+%----------------------------------------------------------------------------------------
+
+%\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
+%
+%% The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
+%Reduced Planck's constant & $\hbar$ & \SI{1.054571800d-34}{\joule\second\per\radian}\\
+%Speed of Light & $c$ & \SI{2.99792458e8}{\meter\per\second}\\
+%Vacuum Permeability & $\mu_0$ & $4\pi\times$\SI{d-7}{\newton\per\ampere\squared} \\
+%Vacuum Permitivity & $\varepsilon_0$ & $1/\mu_0 c^2$\\
+%Vacuum Impedance & $\eta$ & $\mu_0 c$\\
+%\end{constants}
+%
+%----------------------------------------------------------------------------------------
+%	SYMBOLS
+%----------------------------------------------------------------------------------------
+
+%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
+%
+%$a$ & distance & \si{\meter} \\
+%$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
+%%Symbol & Name & Unit \\
+%
+%\addlinespace % Gap to separate the Roman symbols from the Greek
+%
+%$\omega$ & angular frequency & \si{\radian} \\
+%
+%\end{symbols}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+
+\subfile{Chapters/Chapter0/Chapter_0}
+\subfile{Chapters/Chapter1/Chapter_1}
+\subfile{Chapters/Chapter2/Chapter_2} 
+\subfile{Chapters/Chapter3/Chapter_3}
+\subfile{Chapters/Chapter4/Chapter_4} 
+%\subfile{Chapters/Chapter5/Chapter_5} 
+%\subfile{Chapters/Chapter6/Chapter_6} 
+\subfile{Chapters/Conclusions/Conclusions}
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+
+\chapter{List of symbols}\label{App}
+\begin{tabular}{ l c c c l}
+ $\mathbb{C}$ & & & & set of complex numbers  \\ 
+ $\mathbb{N}$ & & & &  set of natural numbers  \\ 
+ $\mathbb{R}$ & & & & set of real numbers  \\ 
+ $\mathbb{R}^+$ & & & & set of positive real numbers  \\ 
+ $\mathcal{H}$ & & & & Hilbert space\\ 
+ $\mathcal{B}(\mathcal{H})$ & & & & set of linear operators on a Hilbert space $\mathcal{H}$\\ 
+ $\M_d$& & & & set of square matrices of size $d$ with complex entries\\ 
+ $\M_{m,n}$& & & & set of matrices of size $m\times n$ with complex entries\\ 
+ $\bar{A}$& & & &  complex conjugate of the matrix $A$\\ 
+ $A^{T}$& & & &  transpose of the matrix $A$\\ 
+ $A^{\dagger}$& & & &  Hermitian adjoint of the matrix $A\in\M_{m,n}$, $A^{\dagger}=\bar{A}^{T}$\\ 
+ $\id$& & & & identity matrix\\ 
+ $\otimes$ & & & & tensor product\\
+ $\oplus$ & & & & direct sum\\
+ $\tr(A)$ & & & & trace of the matrix $A$\\
+ 
+\end{tabular}
+\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Proof of Proposition \ref{t1}}\label{appproof1}
+In order to prove this Proposition, we will present some lemmas (Lemma \ref{l1}, Lemma \ref{l2} and Lemma \ref{l3}). First, consider the case for which the projector is the completely depolarizing map, i.e., $\pp(\rho)=\tr(\rho)\sigma$, where $\sigma>0$ and $\tr(\sigma)=1$. For this case, we need a purely dissipative Liouvillian with two jump operators.\\
+
+\begin{lemma}\label{l1}
+Consider the projector quantum channel $\pp(\rho)=\tr(\rho)\sigma$, $\sigma=\sum_{i=1}^{d}\theta_i^2\ket{i}\bra{i}$ with $\{\ket{i}\}_{i=1}^{d}$ being any orthogonal basis, $\sigma>0$ and $\tr(\sigma)=1$. Then, $\pp=\lim_{t\to\infty}e^{t\mathcal{L}[H,R_1,R_2]}$ with $H=0$, 
+
+\begin{equation} \label{c1}
+R_1=\sum_{i=1}^{d-1}\theta_i\ket{i}\bra{i+1}\quad \text{and} \quad
+R_2=\sum_{i=1}^{d-1}\theta_{i+1}\ket{i+1}\bra{i}.
+\end{equation}\\
+\end{lemma}
+
+\begin{proof}
+The idea of the proof is to see is that $\sigma$ is the only fixed point of $e^{t\mathcal{L}}(\rho)$ which has eigenvalue 1, i.e., the map is primitive. To see this, note first that $\mathcal{L}(\sigma)=0$, i.e., $e^{\mathcal{L}}(\sigma)=\sigma$. The Liouvillian has been constructed with the jump operators of \eqref{c1}, as given in \eqref{jumptoliouv}. It reads
+
+\begin{equation}\label{liouv}
+\begin{split}
+\mathcal{L}(\rho)&=\sum_{i,j=1}^{d-1}\Bigl[\theta_i\theta_j\ket{i}\bra{i+1}\rho\ket{j+1}\bra{j}+\theta_{i+1}\theta_{j+1}\ket{i+1}\bra{i}\rho\ket{j}\bra{j+1}\\
+&-\frac{1}{2}\{\theta_i^2\ket{i+1}\bra{i+1},\rho\}-\frac{1}{2}\{\theta_{i+1}^2\ket{i}\bra{i},\rho\}\Bigr].
+\end{split}
+\end{equation}\\
+In order to see the primitivity of this map, one needs to see that $\mathcal{L}$ has no other 0 eigenvalues. By Proposition 7.5 of \cite{Wo12}, this will imply that the map is primitive (i.e., $e^{\mathcal{L}}$ cannot have other eigenvalues of modulus 1). That is, one wants to see that there is no $\rho$ orthogonal to $\sigma$, i.e., $\tr(\sigma^{\dagger}\rho)=0$, such that $\mathcal{L}(\rho)=0$. The latter implies that $\lim_{t\to\infty}e^{t\mathcal{L}}(\rho)=0$ because the real part of any eigenvalue of $\mathcal{L}$ is not positive, as we have explained in Section \ref{markovianchannel}. In order to do that, consider first $\rho$ which has only off-diagonal terms, i.e., $\rho=\sum_{k,l=1}^{d}\alpha_{k,l}\ket{k}\bra{l}$ for $k\neq l$. Using this expression of $\rho$ in \eqref{liouv} one sees that the first two terms are zero. However, the anticommutator terms never vanish, 
+
+\begin{equation} \label{rhooffdiag}
+\mathcal{L}\left(\sum_{\substack{l,k=1 \\ l\neq k}}^{d}\alpha_{k,l}\ket{k}\bra{l}\right)=\sum_{\substack{l,k=2 \\ l\neq k}}^{d-1}-\frac{\alpha_{k,l}}{2}\Bigl(\theta_{k-1}^2+\theta_{l-1}^2+\theta_{k+1}^2+\theta_{l+1}^2\Bigr)\ket{k}\bra{l},
+\end{equation}\\
+so that $\mathcal{L}(\sum_{\substack{l,k=1 \\ l\neq k}}^{d}\alpha_{k,l}\ket{k}\bra{l})\neq 0$ for all $k\neq l$ and, of course, for some $\alpha_{k,l}\neq 0$.\\
+
+The second case is $\rho$ diagonal but different from $\sigma$, i.e., $\rho=\sum_{k=1}^{d}\alpha_k\ket{k}\bra{k}$. Again, using this expression in \eqref{liouv}, one sees that
+
+\begin{equation} \label{rhodiag}
+\mathcal{L}\left(\sum_{k=1}^{d}\alpha_k\ket{k}\bra{k}\right)=\sum_{i=1}^{d-1}\Bigl[(\alpha_{i+1}\theta_i^2-\alpha_i\theta_{i+1}^2)\ket{i}\bra{i}+(\alpha_{i}\theta_{i+1}^2-\alpha_{i+1}\theta_{i}^2)\ket{i+1}\bra{i+1}\Bigr],
+\end{equation}\\
+and it is different form 0 unless $\alpha_i=\theta_i^2$, which contradicts the assumption that $\rho\neq \sigma$.\\
+
+Finally, consider $\rho$ as a linear combination of diagonal and off-diagonal terms, $\rho=\sum_{k,l=1}^{d}\alpha_{k,l}\ket{k}\bra{l}+\beta_k\ket{k}\bra{k}$. It is straightforward to see that $\mathcal{L}(\rho)\neq0$ using \eqref{rhooffdiag} and \eqref{rhodiag}.\\
+\end{proof}
+
+Now consider $\M_d=\M_{d,1}\otimes\M_{d,2}$, so that the projector quantum channel acts as the identity on the first factor and the completely depolarizing map on the second, $\pp(\rho^{(1)}\otimes\rho^{(2)})=\text{id}(\rho^{(1)})\otimes \tr(\rho^{(2)})\sigma$. For this case, we also need a purely dissipative Liouvillian with two jump operators.\\
+
+\begin{lemma}\label{l2}
+Consider $\rho^{(1)}\in\M_{d_1}$ and $\rho^{(2)}\in\M_{d_2}$. The projector quantum channel $\pp(\rho^{(1)}\otimes\rho^{(2)})=\text{id}(\rho^{(1)})\otimes \tr(\rho^{(2)})\sigma$ with $\sigma=\sum_{i=1}^{d_2}\theta_i^2\ket{i}\bra{i}>0$ and $\tr(\sigma)=1$ can be written as $\pp=\lim_{t\to\infty}e^{t\mathcal{L}[H,R_1,R_2]}$ with $H=0$,
+
+\begin{equation}
+R_1=\id_{d_1}\otimes\sum_{i=1}^{d_2-1}\theta_i\ket{i}\bra{i+1}\quad and \quad
+R_2=\id_{d_1}\otimes\sum_{i=1}^{d_2-1}\theta_{i+1}\ket{i+1}\bra{i}.
+\end{equation}\\
+\end{lemma}
+
+\begin{proof}
+With these jump operators, recalling \eqref{jumptoliouv}, the Liouvillian reads 
+
+\begin{equation}\label{liouv2}
+\begin{split}
+\mathcal{L}(\rho)&=\sum_{i,j=1}^{d_2-1}\Bigl[(\id_{d_1}\otimes\theta_i\ket{i}\bra{i+1})\rho(\id_{d_1}\otimes\theta_j\ket{j+1}\bra{j})\\
+&+(\id_{d_1}\otimes\theta_{i+1}\ket{i+1}\bra{i})\rho(\id_{d_1}\otimes\theta_{j+1}\ket{j}\bra{j+1}\\
+&-\frac{1}{2}\{\id_{d_1}\otimes\theta_i^2\ket{i+1}\bra{i+1},\rho\}-\frac{1}{2}\{\id_{d_1}\otimes\theta_{i+1}^2\ket{i}\bra{i},\rho\}\Bigr].
+\end{split}
+\end{equation}\\
+Using $\rho=\rho^{(1)}\otimes\rho^{(2)}$ in \eqref{liouv2} it is straightforward to see that $\rho^{(1)}$ is a common factor so that
+
+\begin{equation}
+\mathcal{L}(\rho^{(1)}\otimes\rho^{(2)})=\rho^{(1)}\otimes\mathcal{L}_{\sigma}(\rho^{(2)}),
+\end{equation}\\
+where $\mathcal{L}_{\sigma}(\rho^{(2)})$ is the Liouvillian given in \eqref{liouv}. Thus, it is clear that
+
+\begin{equation}
+\lim_{t\to\infty}e^{\mathcal{L}}(\rho)=\lim_{t\to\infty}e^{\mathcal{L}}(\rho^{(1)}\otimes\rho^{(2)})=\text{id}(\rho^{(1)})\otimes e^{\mathcal{L}_{\sigma}}(\rho^{(2)})=\text{id}(\rho^{(1)})\otimes \tr(\rho^{(2)})\sigma,
+\end{equation}\\
+which is the projector $\pp(\rho)=\text{id}(\rho^{(1)})\otimes \tr(\rho^{(2)})\sigma$.\\
+\end{proof}
+
+Let us now consider the case that the quantum channel has a block diagonal structure, $\pp(\rho)=\bigoplus_{k=1}^{n}\pp_k(\rho)$, with $n$ being the number of blocks. We will see that we need a Liouvillian with two jump operators that are also block diagonal, and, as before, there is no Hamiltonian part.\\
+
+\begin{lemma}\label{l3}
+The projector quantum channel $\pp(\rho)=\bigoplus_{k=1}^{n}\tr(\rho_k)\sigma_k$ can be written as $\pp=\lim_{t\to\infty}e^{t\mathcal{L}[H,R_{k,1},R_{k,2}]}$ with $H=0$, 
+
+\begin{equation} \label{c3}
+\begin{split}
+R_{k,1}=\ket{k}\bra{k}\otimes\Big(\sum_{i=1}^{d_{k,2}-1}\theta_{k,i}\ket{i}\bra{i+1}\Big),
+\\
+R_{k,2}=\ket{k}\bra{k}\otimes\Big(\sum_{i=1}^{d_{k,2}-1}\theta_{k,i+1}\ket{i+1}\bra{i}\Big),
+\end{split}
+\end{equation}
+where $k=1,\dots,n$.\\
+\end{lemma}
+
+\begin{proof}
+Like in Lemma \ref{l1} the idea is to prove the primitivity of the map $e^{\mathcal{L}}(\rho)$ by seeing that if $\rho$ is different from $\sigma$, then $\mathcal{L}(\rho)\neq0$. The Liouvillian is constructed from the jump operators of \eqref{c3}, recalling \eqref{jumptoliouv}. It is given by 
+
+\begin{equation}\label{liouv3}
+\begin{split}
+\mathcal{L}(\rho)=&\sum_{k,l=1}^{n}\sum_{i,j=1}^{d-1}\Biggl\{\Big[\ket{k}\bra{k}\otimes\Big(\theta_i\ket{i}\bra{i+1}\Big)\Big]\rho\Big[\ket{l}\bra{l}\otimes\Big(\theta_j\ket{j+1}\bra{j}\Big)\Big]\\
+&+\Big[\ket{k}\bra{k}\otimes\Big(\theta_{i+1}\ket{i+1}\bra{i}\Big)\Big]\rho\Big[\ket{l}\bra{l}\otimes\Big(\theta_{j+1}\ket{j}\bra{j+1}\Big)\Big]\\
+&-\frac{1}{2}\{\ket{k}\bra{k}\otimes\Big(\theta_i^2\ket{i+1}\bra{i+1}\Big),\rho\}-\frac{1}{2}\{\ket{k}\bra{k}\otimes\Big(\theta_{i+1}^2\ket{i}\bra{i}\Big),\rho\}\Biggr\}.
+\end{split}
+\end{equation}\\
+First, it is straightforward form the Liouvillian that if $\rho=\sum_{i=1}^{d-1}\ket{i}\bra{i}\otimes\theta_i^2\ket{i}\bra{i}$, then $\mathcal{L}(\rho)=0$. Moreover, it is clear from \eqref{liouv3} that if $\rho$ is of the form $\rho=\sum_{m\neq n}\sum_{r\neq s}\Big(\ket{m}\bra{n}\otimes\ket{r}\bra{s}\Big)$ then $\mathcal{L}(\rho)$ is different from 0, 
+
+\begin{equation}
+\mathcal{L}\Bigg(\sum_{m\neq n}\sum_{r\neq s}\Big(\ket{m}\bra{n}\otimes\ket{r}\bra{s}\Big)\Bigg)=\\
+-\frac{1}{2}\Bigg(\sum_{m\neq n}\ket{m}\bra{n}\otimes\sum_{r\neq s}\Big(\theta_{r-1}^2+\theta_{s-1}^2+\theta_{r+1}^2+\theta_{s+1}^2\Bigr)\ket{r}\bra{s}\Bigg).
+\end{equation}\\
+Thus, in the limit $t\to\infty$, the only term that remains is the one for which $\rho=\sigma$, which is the only eigenvector of eigenvalue 1.\\
+\end{proof}
+
+Combining these Lemmas, with Definition \ref{t2}, we are now ready to prove Proposition \ref{t1}.\\
+
+\begin{proof}
+According to Definition \ref{t2}, any projector quantum channel can be expressed as $\pp(\rho)=\bigoplus_{k=1}^n\left(\text{id}(\rho_k^{(1)})\otimes\tr(\rho_k^{(2)})\sigma_k\right)$, with $\sigma_k>0$ and $\tr(\sigma_k)=1$. From Lemma \ref{l2} it follows that any map which has a tensor product structure $\pp(\rho^{(1)}\otimes\rho^{(2)})=\text{id}(\rho^{(1)})\otimes \tr(\rho^{(2)})\sigma$ can be written as in \eqref{limit}, with the jump operators $\id_{d_1}\otimes R_{j}$, where $R_{j}$ are the jump operators of the completely depolarizing map $\pp(\rho^{(2)})=\tr(\rho^{(2)})\sigma$. Moreover, it follows from Lemma \ref{l1} that a map of the form $\pp(\rho^{(2)})=\tr(\rho^{(2)})\sigma$ can be written in the form of \eqref{limit} with the jump operators $R_{1}=\sum_{i=1}^{d_2-1}\theta_i\ket{i}\bra{i+1}$ and $R_{2}=\sum_{i=1}^{d_2-1}\theta_{i+1}\ket{i+1}\bra{i}$. From Lemma \ref{l3}, any quantum channel that has a direct sum structure, can be written as in \eqref{limit} with a Liouvillian that has as jump operators the jump operators of each block. Therefore, combining all these results it is obtained that any projector quantum channel can be written as $\pp(\rho)=\lim_{t\to\infty}e^{t\mathcal{L}[H,R_{k,1},R_{k,2}]}(\rho)$ with $H=0$, and jump operators given by Equations \eqref{jumpoperatorsgeneral}.\\
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Proof of Proposition \ref{propsingleR}}\label{appproof2}
+\begin{proof}
+The projector is given by $P = \sum_{k=1}^n|k\ra\la k|\otimes |k\ra \la k|\otimes\id\otimes\id\otimes \ket{\sigma_k}\bra{\id}$. Throughout the proof we will use that $\sigma_k$ is full rank and hence can be inverted, as well as $\tr(\sigma_k)=1$. For the imaginary part of $PL=PLP$, the matrix component $\la k,k|\dots|l,k\ra$ on the first tensor product, with $l\neq k$ gives
+
+\be
+A_{k,l}(B\rho_1)\sigma_k\tr(C\rho_2)=0,
+\ee\\
+which implies that $A$ has to be diagonal. The matrix element $\la k,k,|\dots|k,k\ra$ gives
+\be
+\begin{split}
+-iA_{k,k}(B\rho_1)\sigma_k\tr(C\rho_2)+i\bar A_{k,k} (\rho_1B^{\dagger})\sigma_k\tr(\rho_2C^{\dagger})\\=-iA_{k,k}(B\rho_1)\sigma_k\tr(C\sigma_k)\tr(\rho_2)+i\bar A_{k,k} (\rho_1B^{\dagger}) \sigma_k\tr(\sigma_k C^{\dagger})\tr(\rho_2).
+\end{split}
+\ee\\
+Since $A=A^{\dagger}$, $B=B^{\dagger}$ and $C=C^{\dagger}$, for all $\rho_1,\rho_2$ it must hold that
+
+\be
+[-B\rho_1+\rho_1B]\tr(C\rho_2)=[-B\rho_1+\rho_1B]\tr(C\sigma_k)\tr(\rho_2).
+\ee\\
+Using the fact that the only matrix that commutes with everything is a matrix which is proportional to the identity, it implies that: 
+
+\begin{enumerate}[label=(\roman*)]
+\item $C\not\propto \id$ and $B\propto \id$, or
+\item $B\not\propto \id$ and $C\propto \id$, or
+\item $C\propto \id$ and $B\propto \id$. \\
+\end{enumerate}
+
+For the real part of the equation $PL=PLP$, the matrix element $\la k,k|\dots|l,m\ra$ with $k\neq l$, $k\neq m$ and $m\neq l$ gives $S_{k,l}\bar S_{k,m} (T\rho_1T^{\dagger})\sigma_k\tr(V\rho_2V^{\dagger})=0$, which implies
+
+\be
+S_{k,l}S_{k,m}=0.
+\label{k,k,l,m}
+\ee\\
+The matrix components $\la k,k|\dots|k,k\ra$, $\la k,k|\dots|l,k\ra$ and $\la k,k|\dots|l,l\ra$ (with $k\neq l$) give, respectively,
+
+\be
+\begin{split}
+\Big\{|S_{k,k}|^2(T\rho_1T^{\dagger})-\frac{1}{2}(S^{\dagger}S)_{k,k}[(T^{\dagger}T\rho_1)+(\rho_1T^{\dagger}T)]\Big\}\\\Big\{\tr(V\rho_2 V^{\dagger})-\tr(V\sigma_k V^{\dagger})\tr(\rho_2)\Big\}=0
+\label{k,k,k,k}
+\end{split}
+\ee
+\be
+\Big\{S_{k,l}\bar S_{k,k} T\rho_1T^{\dagger}-\frac{1}{2}(S^{\dagger}S)_{k,l} T^{\dagger}T\rho_1\Big\}\tr(V\rho_2V^{\dagger}=0
+\label{k,k,l,k}
+\ee
+\be
+|S_{k,l}|^2(T\rho_1T^{\dagger})\Big\{\tr(V\rho_2 V^{\dagger})-\tr(V\sigma_k V^{\dagger})\tr(\rho_2)\Big\}=0
+\label{k,k,l,l}
+\ee\\
+for all $\rho_1, \rho_2$. First note that if $T\not\propto\id$ and $V\not\propto U$, then $S=0$, which is false by assumption. Therefore, there are three cases:
+\begin{enumerate}[label=(\alph*)]
+\item If $T\propto\id$ and $V\propto U$ then Eq.\ \eqref{k,k,l,k} implies that $S_{k,l}\bar S_{k,k}=\bar S_{l,k} S_{l,l}$, which together with \eqref{k,k,l,m} means that $S$ satisfies the conditions $S_{k,l}\bar S_{k,m} =0$ and $S_{k,k} \bar S_{k,l}=S_{l,k} \bar S_{l,l}$.
+\item If  $T\not\propto \id$ and $V\propto U$, then Eq.\ \eqref{k,k,l,k} implies that $S_{k,l}\bar S_{k,k}=\bar S_{l,k} S_{l,l}=0$, i.e., $S$ has only one non-zero element per row.
+\item If $T\propto \id$ and $V\not\propto U$, then Eq.\ \eqref{k,k,l,l} implies that $S_{k,l}=0$, i.e., $S$ is diagonal.
+\end{enumerate}
+
+\end{proof}
+
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+%\include{Appendices/AppendixA}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+%\printbibliography[heading=bibintoc]
+\bibliographystyle{nosort}
+\bibliography{/Users/Miqueleta/Desktop/MTdrafts/biblio.bib}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}  

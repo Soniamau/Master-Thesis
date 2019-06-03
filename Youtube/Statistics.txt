@@ -1,0 +1,9 @@
+STATISTICS QUBIT
+
+Mean= 21.2491
+Mode= 18
+Median=19
+Var= 43.2055
+STD= 6.5731
+
+
